@@ -1,0 +1,37 @@
+{
+  "name": "@codedoc/cli",
+  "version": "0.0.1",
+  "description": "CLI helper for codedoc projects",
+  "main": "index.js",
+  "bin": {
+    "codedoc": "src/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CONNECT-platform/codedoc-cli.git"
+  },
+  "keywords": [
+    "codedoc",
+    "documentation",
+    "docs",
+    "cli",
+    "jamstack",
+    "github-pages"
+  ],
+  "author": "Eugene Ghanizadeh Khoub <ghanizadeh.eugene@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CONNECT-platform/codedoc-cli/issues"
+  },
+  "homepage": "https://github.com/CONNECT-platform/codedoc-cli#readme",
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "shelljs": "^0.8.3",
+    "ts-node": "^8.8.2",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3"
+  }
+}

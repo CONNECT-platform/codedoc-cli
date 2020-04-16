@@ -1,0 +1,1 @@
+throw new Error('THIS PACKAGE IS NOT TO BE IMPORTED');
