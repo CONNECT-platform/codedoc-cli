@@ -3,6 +3,7 @@ const chalk = require('chalk');
 
 const colors = require('./colors');
 const exec = require('./exec');
+const autoconf = require('./auto-conf');
 
 
 const checkNotInit = () => {
@@ -100,5 +101,6 @@ module.exports = {
     checkNPM();
     await cloneFiles();
     await installDependencies();
+    await autoconf();
   }
 }
