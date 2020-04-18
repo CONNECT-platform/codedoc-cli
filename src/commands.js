@@ -28,6 +28,7 @@ const commands = [
   require('./init'),
   require('./serve'),
   require('./build'),
+  require('./update'),
   require('./version'),
   help,
 ]

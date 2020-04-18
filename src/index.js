@@ -17,16 +17,17 @@ shell.echo();
 
 let fulfilled = false;
 
-commands.forEach(command => {
-  if (command.cues.includes(process.argv[argvindex])) {
-    command.run();
+commands.forEach(async command => {
+  if (command.cues.includes(process.argv[argvindex]) && !fulfilled) {
     fulfilled = true;
+    await command.run();
+    shell.echo();
   }
 });
 
 if (!fulfilled) {
-  shell.echo(chalk`{${colors.error} # Error:} unrecognized command.`);
+  shell.echo(chalk`{${colors.error} # Error:} unrecognized command: ${process.argv[argvindex]}`);
   commands.help.run();
 }
 
-shell.echo();
+
