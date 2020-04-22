@@ -61,7 +61,7 @@ export const config = /*#__PURE__*/configuration({
 });
 `;
 
-  fs.writeFile('.codedoc/config.ts', conf, err => {
+  fs.writeFile(path.join('.codedoc', 'config.ts'), conf, err => {
     if (err) {
       shell.echo(chalk`{${colors.warning} # WARNING:} Could not write automatic configuration.`);
       shell.echo(err);
