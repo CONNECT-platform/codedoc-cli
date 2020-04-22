@@ -7,10 +7,10 @@ const colors = require('./colors');
 const commands = require('./commands');
 
 
-let argvindex = 1;
+let argvindex = 2;
 
-if (/\/node$/.test(process.argv[0])) {
-  argvindex = 2;
+if (/index\.js$/.test(process.argv[0])) {
+  argvindex = 1;
 }
 
 shell.echo();
