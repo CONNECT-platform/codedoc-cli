@@ -3,14 +3,14 @@ const chalk = require('chalk');
 
 const colors = require('./colors');
 const exec = require('./exec');
-const checkInit = require('./check-init');
+const checkInstall = require('./check-install');
 
 
 module.exports = {
   cues: ['build', 'b', 'B', '-b', '-B', '--build'],
   hint: 'build your docs for deployment.',
   run: async () => {
-    checkInit();
+    await checkInstall();
     shell.echo(chalk`{${colors.success} #} Building ...`);
     shell.echo(chalk`{${colors.success} #} Fetching project configuration ...`);
     try {

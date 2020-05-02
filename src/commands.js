@@ -30,6 +30,7 @@ const commands = [
   require('./build'),
   require('./update'),
   require('./version'),
+  require('./install'),
   help,
 ]
 
