@@ -20,7 +20,7 @@ let fulfilled = false;
 commands.forEach(async command => {
   if (command.cues.includes(process.argv[argvindex]) && !fulfilled) {
     fulfilled = true;
-    await command.run();
+    await command.run(...process.argv.slice(argvindex + 1));
     shell.echo();
   }
 });

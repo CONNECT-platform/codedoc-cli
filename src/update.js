@@ -7,15 +7,28 @@ const colors = require('./colors');
 
 module.exports = {
   cues: ['update', 'upgrade', 'u', 'U', '-u', '--update', '--upgrade'],
-  hint: 'Updates codedoc CLI and local installation.',
-  run: async () => {
-    shell.echo(chalk`{${colors.success} #} Updating CLI ...`);
-    await exec('npm', 'update -g @codedoc/cli');
-
-    if (shell.test('-d', '.codedoc')) {
-      shell.echo(chalk`{${colors.success} #} Updating local codedoc installation ...`);
-      shell.cd('.codedoc');
-      await exec('npm', 'update @codedoc/core');
+  hint: 
+chalk`updates codedoc CLI and local installation. 
+{gray #}                           use {${colors.highlight} update latest} to force update to latest verison.`,
+  run: async (mode) => {
+    if (mode === 'latest') {
+      shell.echo(chalk`{${colors.success} #} Updating CLI to latest version ...`);
+      await exec('npm', 'install -g @codedoc/cli@latest');
+  
+      if (shell.test('-d', '.codedoc')) {
+        shell.echo(chalk`{${colors.success} #} Updating local codedoc installation to latest version ...`);
+        shell.cd('.codedoc');
+        await exec('npm', 'install @codedoc/core@latest');
+      }
+    } else {
+      shell.echo(chalk`{${colors.success} #} Updating CLI ...`);
+      await exec('npm', 'update -g @codedoc/cli');
+  
+      if (shell.test('-d', '.codedoc')) {
+        shell.echo(chalk`{${colors.success} #} Updating local codedoc installation ...`);
+        shell.cd('.codedoc');
+        await exec('npm', 'update @codedoc/core');
+      }
     }
   }
 }

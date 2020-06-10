@@ -8,7 +8,7 @@ const checkInit = require('./check-init');
 
 module.exports = {
   cues: ['install', '--install'],
-  hint: 'Installs required local packages as specified in .codedoc',
+  hint: 'installs required local packages as specified in .codedoc',
   run: async() => {
     await checkInit();
     shell.echo(chalk`{${colors.success} #} Installing local packages required by codedoc ...`);
