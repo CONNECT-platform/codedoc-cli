@@ -20,6 +20,8 @@ const help = {
         + ` ${command.hint}`
       )
     });
+    shell.echo(chalk`{${colors.faded} #}`);
+    shell.echo(chalk`{${colors.faded} #} Read {${colors.link} https://codedoc.cc/docs/cli} for more information.`);
     shell.echo();
   }
 }

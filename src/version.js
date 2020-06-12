@@ -13,6 +13,16 @@ const version = pkg => new Promise((resolve, reject) => {
 });
 
 
+const majorDiff = (v1, v2) => {
+  const v1split = v1.split('.');
+  const v2split = v2.split('.');
+
+  if (v1split[0] !== v2split[0]) return true;
+  if (v1split[0] === '0' && v1split[1] !== v2split[1]) return true;
+  return false;
+}
+
+
 const divider = '...........................................';
 
 
@@ -64,8 +74,22 @@ module.exports = {
 
     if (core_update || cli_update) {
       shell.echo();
-      shell.echo(chalk`{${colors.warning} # WARNING:} some packages are missing or need update.`);
-      shell.echo(chalk`{${colors.warning} #} Please run {${colors.highlight} {bold codedoc} update}`);
+      if (majorDiff(core_installed, core_latest) || majorDiff(cli_installed, cli_latest)) {
+        shell.echo(chalk`{${colors.warning} # WARNING:} There are major updates to some packages.`);
+        shell.echo(chalk`{${colors.warning} #} Use {${colors.highlight} {bold codedoc} update latest} to update to latest version.`);
+        shell.echo(chalk`{${colors.warning} #}`);
+        shell.echo(chalk`{${colors.warning} # {bold NOTE:}} This update might contain breaking changes.`);
+        shell.echo(chalk`{${colors.warning} # {bold NOTE:}} Check https://codedoc.cc for more information.`);
+        shell.echo();
+        shell.echo(chalk`{${colors.faded} #} You can still use {${colors.highlight} {bold codedoc} update} to update to latest minor version compatible with your installed version.`)
+      } else {
+        shell.echo(chalk`{${colors.warning} # WARNING:} some packages are missing or need update.`);
+        shell.echo(chalk`{${colors.warning} #} Please run {${colors.highlight} {bold codedoc} update}`);
+        shell.echo();
+      }
+
+      shell.echo(chalk
+      `{${colors.faded} #} Read {${colors.link} https://codedoc.cc/docs/cli#updates} for more information on updates.`);
     }
   }
 }
