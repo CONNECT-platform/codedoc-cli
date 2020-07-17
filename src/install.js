@@ -9,10 +9,16 @@ const checkInit = require('./check-init');
 module.exports = {
   cues: ['install', '--install'],
   hint: 'installs required local packages as specified in .codedoc',
-  run: async() => {
+  run: async(...args) => {
     await checkInit();
-    shell.echo(chalk`{${colors.success} #} Installing local packages required by codedoc ...`);
+    let target = args || [];
+    if (target[0] === 'plugin') target = target.slice(1);
+    if (target.length > 0) {
+      shell.echo(chalk`{${colors.success} #} Installing plugins ...`);
+    } else {
+      shell.echo(chalk`{${colors.success} #} Installing local packages required by codedoc ...`);
+    }
     shell.cd('.codedoc');
-    await exec('npm', 'install');
+    await exec('npm', `install ${target.join(' ')}`);
   }
 }
