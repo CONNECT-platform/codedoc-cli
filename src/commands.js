@@ -28,6 +28,7 @@ const help = {
 
 const commands = [
   require('./init'),
+  require('./check'),
   require('./serve'),
   require('./build'),
   require('./update'),

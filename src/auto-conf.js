@@ -4,23 +4,7 @@ const shell = require('shelljs');
 const chalk = require('chalk');
 
 const colors = require('./colors');
-
-
-const githubInfo = () => new Promise(resolve => {
-  shell.exec('git remote get-url origin', {silent: true}, (status, url) => {
-    if (status === 0) {
-      const match = /^https\:\/\/github\.com\/(?<user>[^\/]+)\/(?<repo>[^\/]+)\.git$/.exec(url.trim());
-      if (match && match.groups.user && match.groups.repo) {
-        resolve({
-          user: match.groups.user,
-          repo: match.groups.repo
-        });
-      }
-      else resolve();
-    }
-    else resolve();
-  });
-});
+const githubInfo = require('./util/github-info');
 
 
 const camelcase = str => str.split(/\s|\-|\_/).map(part => part[0].toUpperCase() + part.substr(1)).join(' ');
