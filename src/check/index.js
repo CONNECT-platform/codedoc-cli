@@ -4,7 +4,9 @@ const chalk = require('chalk');
 const colors = require('../colors');
 const checkInit = require('../check-init');
 
+const readConfig = require('./read-config');
 const checkGitHubMatch = require('./check-gh');
+const checkTitle = require('./check-title');
 
 
 module.exports = {
@@ -14,16 +16,17 @@ module.exports = {
     let warnings = 0;
     shell.echo(chalk`{${colors.success} #} Checking CODEDOC configuration ...`);
     await checkInit();
-    await checkGitHubMatch(() => warnings++);
+    const config = readConfig();
+    await checkTitle(config, () => warnings++);
+    await checkGitHubMatch(config, () => warnings++);
 
+    shell.echo();
     if (warnings > 0) {
-      shell.echo(chalk`{${colors.warning} #}`);
       shell.echo(
         chalk`{${colors.warning} # Check finished with ${warnings} ${warnings === 1 ? 'warning' : 'warnings'}.}`
       );
-      shell.echo(chalk`{${colors.warning} #}`);
     } else {
-      shell.echo(chalk`${colors.success} # No issues detected.`);
+      shell.echo(chalk`{${colors.success} #} No issues detected.`);
     }
   }
 }
