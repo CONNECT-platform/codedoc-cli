@@ -63,6 +63,11 @@ const cloneFiles = async () => {
 
     if (!shell.test('-d', 'docs/assets')) shell.mkdir('-p', './docs/assets');
 
+    if (!shell.test('-e', 'docs/Dockerfile') && !shell.test('-e', 'docs/docker-compose.yml')) {
+      shell.cp('-f', './codedoc-boilerplate/docs/Dockerfile', './docs/');
+      shell.cp('-f', './codedoc-boilerplate/docs/docker-compose.yml', './docs/');
+    }
+
     shell.rm('-rf', './codedoc-boilerplate');
   } catch(err) {
     shell.echo(chalk`{${colors.error} # Cloning Files Failed!}`);
