@@ -22,7 +22,7 @@ module.exports = {
         await exec('ts-node-dev', '-T --project .codedoc/tsconfig.json .codedoc/serve');
       }
     } catch (error) {
-      error && console.error('\nError !!!\n', error);
+      shell.echo(chalk`{${colors.error} # Error:} ${error}`);
     }
   },
 };
