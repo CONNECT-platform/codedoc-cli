@@ -5,19 +5,19 @@ module.exports = (cmd, params) =>
   new Promise((resolve, reject) => {
     const nodeModuleFolder = path.join(__dirname, '..', 'node_modules');
     const binFolder = path.join(nodeModuleFolder, '.bin');
-    const pathEnv = [process.env.PATH || '', binFolder].filter(x => !!x);
-    const nodeEnv = [process.env.NODE_PATH || '', nodeModuleFolder].filter(x => !!x);
+    const pathArr = [process.env.PATH || '', binFolder].filter(x => !!x);
+    const nodePathArr = [process.env.NODE_PATH || '', nodeModuleFolder].filter(x => !!x);
 
     if (process.platform === 'win32') {
       const ENV_SEPARATOR = ';';
 
-      const pathEnv = pathEnv.join(ENV_SEPARATOR);
+      const pathEnv = pathArr.join(ENV_SEPARATOR);
 
       const env = {
         ...process.env,
         PATH: pathEnv,
         Path: pathEnv,
-        NODE_PATH: nodeEnv.join(ENV_SEPARATOR),
+        NODE_PATH: nodePathArr.join(ENV_SEPARATOR),
       };
       let child = null;
       try {
@@ -48,8 +48,8 @@ module.exports = (cmd, params) =>
           shell: 'bash',
           env: {
             ...process.env,
-            PATH: pathEnv.join(ENV_SEPARATOR),
-            NODE_PATH: nodeEnv.join(ENV_SEPARATOR),
+            PATH: pathArr.join(ENV_SEPARATOR),
+            NODE_PATH: nodePathArr.join(ENV_SEPARATOR),
           },
         });
 
