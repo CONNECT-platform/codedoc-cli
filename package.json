@@ -7,7 +7,8 @@
     "codedoc": "src/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier -w ."
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "typescript": "^3.8.3"
   },
   "devDependencies": {
-    "eslint": "^7.19.0"
+    "eslint": "^7.19.0",
+    "prettier": "^2.2.1"
   }
 }

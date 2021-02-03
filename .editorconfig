@@ -8,13 +8,13 @@ root = true
 [*]
 
 # Max line length
-max_line_length=130
+max_line_length=140
 
 # remove any whitespace characters preceding newline characters
 trim_trailing_whitespace = true
 
 # newline ending every file
-insert_final_newline = true
+insert_final_newline = false
 
 # Denotes preferred quoting style for string literals
 quote_type = single
