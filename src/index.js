@@ -6,7 +6,6 @@ const chalk = require('chalk');
 const colors = require('./colors');
 const commands = require('./commands');
 
-
 let argvindex = 2;
 
 if (/index\.js$/.test(process.argv[0])) {
@@ -29,5 +28,3 @@ if (!fulfilled) {
   shell.echo(chalk`{${colors.error} # Error:} unrecognized command: ${process.argv[argvindex]}`);
   commands.help.run();
 }
-
-

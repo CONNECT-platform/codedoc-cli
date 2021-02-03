@@ -5,7 +5,6 @@ const colors = require('./colors');
 const exec = require('./exec');
 const autoconf = require('./auto-conf');
 
-
 const checkNotInit = () => {
   if (shell.test('-d', '.codedoc')) {
     shell.echo(chalk`{${colors.error} # Error:} Project already initialized!`);
@@ -16,8 +15,7 @@ const checkNotInit = () => {
     shell.echo();
     process.exit(1);
   }
-}
-
+};
 
 const checkGit = () => {
   if (!shell.which('git')) {
@@ -29,8 +27,7 @@ const checkGit = () => {
     shell.echo();
     process.exit(1);
   }
-}
-
+};
 
 const checkNPM = () => {
   if (!shell.which('npm')) {
@@ -42,8 +39,7 @@ const checkNPM = () => {
     shell.echo();
     process.exit(1);
   }
-}
-
+};
 
 const cloneFiles = async () => {
   shell.echo(chalk`{${colors.success} # } Cloning Files ...`);
@@ -53,8 +49,7 @@ const cloneFiles = async () => {
 
     if (!shell.test('-d', 'docs/md')) shell.mkdir('-p', './docs/md');
 
-    if (!shell.test('-e', './docs/md/index.md'))
-      shell.cp('-f', './codedoc-boilerplate/docs/md/index.md', './docs/md/');
+    if (!shell.test('-e', './docs/md/index.md')) shell.cp('-f', './codedoc-boilerplate/docs/md/index.md', './docs/md/');
 
     if (!shell.test('-e', './docs/md/_toc.md')) {
       shell.cp('-f', './codedoc-boilerplate/docs/md/_toc.md', './docs/md/');
@@ -69,7 +64,7 @@ const cloneFiles = async () => {
     }
 
     shell.rm('-rf', './codedoc-boilerplate');
-  } catch(err) {
+  } catch (err) {
     shell.echo(chalk`{${colors.error} # Cloning Files Failed!}`);
     shell.echo();
     process.exit(1);
@@ -79,14 +74,13 @@ const cloneFiles = async () => {
   shell.echo();
 };
 
-
 const installDependencies = async () => {
   shell.echo(chalk`{${colors.success} # } Installing Dependencies ...`);
   shell.cd('.codedoc');
   try {
     await exec('npm', 'i');
     shell.cd('..');
-  } catch(err) {
+  } catch (err) {
     shell.echo(chalk`{${colors.error} # Installing Dependencies Failed!}`);
     shell.echo();
     process.exit(1);
@@ -94,8 +88,7 @@ const installDependencies = async () => {
 
   shell.echo(chalk`{${colors.success} # Dependencies Installed!}`);
   shell.echo();
-}
-
+};
 
 module.exports = {
   cues: ['init', 'i', 'I', '-i', '-I', '--init'],
@@ -107,5 +100,5 @@ module.exports = {
     await cloneFiles();
     await installDependencies();
     await autoconf();
-  }
-}
+  },
+};
