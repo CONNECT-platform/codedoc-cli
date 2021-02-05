@@ -30,7 +30,9 @@ import { theme } from './theme';
 
 
 export const config = /*#__PURE__*/configuration({
-  theme,${spaces(SPACES_COUNT - 6)}// --> add the theme. modify \`./theme.ts\` for changing the theme.
+  theme,${spaces(
+    SPACES_COUNT - 6
+  )}// --> add the theme. modify \`./theme.ts\` for changing the theme.
   ${
     github
       ? `dest: {
@@ -42,7 +44,9 @@ export const config = /*#__PURE__*/configuration({
   }
   page: {
     title: {
-      base: '${name}'${spaces(SPACES_COUNT - 12 - name.length)}// --> the base title of your doc pages
+      base: '${name}'${spaces(
+    SPACES_COUNT - 12 - name.length
+  )}// --> the base title of your doc pages
     }
   },
   ${
@@ -52,7 +56,9 @@ export const config = /*#__PURE__*/configuration({
       user: '${github.user}',${spaces(
           SPACES_COUNT - 13 - github.user.length
         )}// --> your github username (where your repo is hosted)
-      repo: '${github.repo}',${spaces(SPACES_COUNT - 13 - github.repo.length)}// --> your github repo name
+      repo: '${github.repo}',${spaces(
+          SPACES_COUNT - 13 - github.repo.length
+        )}// --> your github repo name
     }
   },`
       : ''
@@ -62,7 +68,9 @@ export const config = /*#__PURE__*/configuration({
 
   fs.writeFile(path.join('.codedoc', 'config.ts'), conf, err => {
     if (err) {
-      shell.echo(chalk`{${colors.warning} # WARNING:} Could not write automatic configuration.`);
+      shell.echo(
+        chalk`{${colors.warning} # WARNING:} Could not write automatic configuration.`
+      );
       shell.echo(err);
       shell.echo(
         chalk`{${colors.warning} #} Configure manually by editing {underline.italic {${colors.link} .codedoc/config.ts}}.`

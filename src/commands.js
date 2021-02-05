@@ -9,7 +9,9 @@ const help = {
   cues: ['help', '-h', 'h', 'H', '-H', '--help'],
   hint: 'tells you how to use the CLI.',
   run: () => {
-    shell.echo(chalk`{${colors.hint} #} Usage: {bold {${colors.highlight} codedoc {italic <command>}}}`);
+    shell.echo(
+      chalk`{${colors.hint} #} Usage: {bold {${colors.highlight} codedoc {italic <command>}}}`
+    );
     shell.echo(chalk`{${colors.hint} #} Possible commands:`);
     shell.echo(chalk`{${colors.hint} #}`);
     commands.forEach(command => {
@@ -20,7 +22,9 @@ const help = {
       );
     });
     shell.echo(chalk`{${colors.faded} #}`);
-    shell.echo(chalk`{${colors.faded} #} Read {${colors.link} https://codedoc.cc/docs/cli} for more information.`);
+    shell.echo(
+      chalk`{${colors.faded} #} Read {${colors.link} https://codedoc.cc/docs/cli} for more information.`
+    );
     shell.echo();
   },
 };

@@ -6,7 +6,9 @@ module.exports = (cmd, params) =>
     const nodeModuleFolder = path.join(__dirname, '..', 'node_modules');
     const binFolder = path.join(nodeModuleFolder, '.bin');
     const pathArr = [process.env.PATH || '', binFolder].filter(x => !!x);
-    const nodePathArr = [process.env.NODE_PATH || '', nodeModuleFolder].filter(x => !!x);
+    const nodePathArr = [process.env.NODE_PATH || '', nodeModuleFolder].filter(
+      x => !!x
+    );
 
     if (process.platform === 'win32') {
       const ENV_SEPARATOR = ';';
@@ -54,7 +56,10 @@ module.exports = (cmd, params) =>
         });
 
         child.on('close', status => {
-          if (status !== 0) reject(new Error('process exited with a non-zero status: ' + status));
+          if (status !== 0)
+            reject(
+              new Error('process exited with a non-zero status: ' + status)
+            );
           else resolve();
         });
       } catch (error) {

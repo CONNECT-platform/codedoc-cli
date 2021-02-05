@@ -25,6 +25,8 @@ commands.forEach(async command => {
 });
 
 if (!fulfilled) {
-  shell.echo(chalk`{${colors.error} # Error:} unrecognized command: ${process.argv[argvindex]}`);
+  shell.echo(
+    chalk`{${colors.error} # Error:} unrecognized command: ${process.argv[argvindex]}`
+  );
   commands.help.run();
 }

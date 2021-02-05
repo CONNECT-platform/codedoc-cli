@@ -15,7 +15,9 @@ module.exports = {
     if (target.length > 0) {
       shell.echo(chalk`{${colors.success} #} Installing plugins ...`);
     } else {
-      shell.echo(chalk`{${colors.success} #} Installing local packages required by codedoc ...`);
+      shell.echo(
+        chalk`{${colors.success} #} Installing local packages required by codedoc ...`
+      );
     }
     shell.cd('.codedoc');
     await exec('npm', `install ${target.join(' ')}`);

@@ -11,7 +11,9 @@ module.exports = async (...args) => {
   }
 
   if (shell.test('-d', '.codedoc')) {
-    shell.echo(chalk`{${colors.success} #} Updating local codedoc installation to latest version ...`);
+    shell.echo(
+      chalk`{${colors.success} #} Updating local codedoc installation to latest version ...`
+    );
     shell.cd('.codedoc');
     await exec('npm', 'install @codedoc/core@latest');
   }

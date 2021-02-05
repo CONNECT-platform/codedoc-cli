@@ -22,7 +22,9 @@ module.exports = {
     shell.echo();
     if (warnings > 0) {
       shell.echo(
-        chalk`{${colors.warning} # Check finished with ${warnings} ${warnings === 1 ? 'warning' : 'warnings'}.}`
+        chalk`{${colors.warning} # Check finished with ${warnings} ${
+          warnings === 1 ? 'warning' : 'warnings'
+        }.}`
       );
     } else {
       shell.echo(chalk`{${colors.success} #} No issues detected.`);
