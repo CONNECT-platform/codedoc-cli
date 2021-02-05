@@ -5,7 +5,6 @@ const colors = require('./colors');
 const exec = require('./exec');
 const checkInstall = require('./check-install');
 
-
 module.exports = {
   cues: ['build', 'b', 'B', '-b', '-B', '--build'],
   hint: 'build your docs for deployment.',
@@ -23,5 +22,5 @@ module.exports = {
 
     shell.echo(chalk`{${colors.success} # Build Successful.}`);
     shell.echo();
-  }
-}
+  },
+};

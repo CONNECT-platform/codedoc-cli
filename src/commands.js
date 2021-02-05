@@ -3,7 +3,6 @@ const chalk = require('chalk');
 
 const colors = require('./colors');
 
-
 const divider = '.....................';
 
 const help = {
@@ -16,15 +15,15 @@ const help = {
     commands.forEach(command => {
       shell.echo(
         chalk`{${colors.hint} #}    {${colors.highlight} ${command.cues[0]}}`
-        + chalk` {${colors.faded} ${divider.substr(command.cues[0].length)}}`
-        + ` ${command.hint}`
-      )
+          + chalk` {${colors.faded} ${divider.substr(command.cues[0].length)}}`
+          + ` ${command.hint}`
+      );
     });
     shell.echo(chalk`{${colors.faded} #}`);
     shell.echo(chalk`{${colors.faded} #} Read {${colors.link} https://codedoc.cc/docs/cli} for more information.`);
     shell.echo();
-  }
-}
+  },
+};
 
 const commands = [
   require('./init'),
@@ -35,8 +34,7 @@ const commands = [
   require('./version'),
   require('./install'),
   help,
-]
-
+];
 
 module.exports = commands;
 module.exports.help = help;

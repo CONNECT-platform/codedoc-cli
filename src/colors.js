@@ -6,4 +6,4 @@ module.exports = {
   link: `hex('9b45e4')`,
   hint: 'gray',
   faded: 'gray',
-}
+};

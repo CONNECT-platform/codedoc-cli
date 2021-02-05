@@ -4,7 +4,6 @@ const shell = require('shelljs');
 const exec = require('../exec');
 const colors = require('../colors');
 
-
 module.exports = async (...args) => {
   if (!args.includes('--local')) {
     shell.echo(chalk`{${colors.success} #} Updating CLI to latest version ...`);
@@ -16,4 +15,4 @@ module.exports = async (...args) => {
     shell.cd('.codedoc');
     await exec('npm', 'install @codedoc/core@latest');
   }
-}
+};

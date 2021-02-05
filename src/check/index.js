@@ -8,11 +8,10 @@ const readConfig = require('./read-config');
 const checkGitHubMatch = require('./check-gh');
 const checkTitle = require('./check-title');
 
-
 module.exports = {
   cues: ['check', 'c', 'C', '-c', '--check'],
   hint: 'check your CODEDOC configuration.',
-  run: async() => {
+  run: async () => {
     let warnings = 0;
     shell.echo(chalk`{${colors.success} #} Checking CODEDOC configuration ...`);
     await checkInit();
@@ -28,5 +27,5 @@ module.exports = {
     } else {
       shell.echo(chalk`{${colors.success} #} No issues detected.`);
     }
-  }
-}
+  },
+};
