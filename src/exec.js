@@ -39,7 +39,7 @@ module.exports = (cmd, params) =>
         reject(new Error(error));
       }
     } else {
-      const ENV_SEPARATOR = ';';
+      const ENV_SEPARATOR = ':';
 
       let child = null;
       try {
@@ -54,7 +54,7 @@ module.exports = (cmd, params) =>
         });
 
         child.on('close', status => {
-          if (status !== 0) reject();
+          if (status !== 0) reject(new Error('process exited with a non-zero status: ' + status));
           else resolve();
         });
       } catch (error) {
